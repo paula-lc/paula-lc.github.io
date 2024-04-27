@@ -1163,14 +1163,14 @@ comics, character creation and graphic design.
               <label>
                 <div class="input-wrapper">
                   <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
-                  <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
+                  <input type="email"  class="form-input" placeholder="Email Address" onblur="validateEmail(this);" required data-form-input>
                 </div>
               </label>
               <label>
                 <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
               </label>
               <!-- your other form fields go here -->
-              <button class="form-btn" type="submit" disabled data-form-btn><ion-icon name="paper-plane"></ion-icon>
+              <button class="form-btn" type="submit" data-form-btn><ion-icon name="paper-plane"></ion-icon>
                 <span>Send Message</span>
               </button>
         </form>
