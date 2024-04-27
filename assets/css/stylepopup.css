@@ -1,0 +1,21 @@
+.overlay {
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    display: grid;
+    position: fixed;
+    pointer-events: none;
+    opacity: 0;
+  
+    &.is-active {
+      opacity: 1;
+      pointer-events: all;
+    }
+  
+    .content {
+      width: 400px;
+      height: 400px;
+      place-self: center;
+      background: red;
+    }
+  }

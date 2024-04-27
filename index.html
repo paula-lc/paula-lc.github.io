@@ -1,187 +1,1193 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daniel Khoury</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet"> 
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paula Lara - Personal Portfolio</title>
+
+  <link rel="shortcut icon" href="./assets/images/minilogo.svg" type="image/x-icon">
+  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./assets/css/stylepopup.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 </head>
 <body>
-  <div class="div" id="intro"></div>
-    <!-- Navbar Section -->
-    <nav class="navbar">
-        <div class="navbar_container">
-            <a href="#intro" id="navbar_logo"><img src="imgs/logo.png" alt="Daniel Khoury signature" height="60"></a>
-            <div class="navbar_toggle" id="mobile-menu">
-                <span class="bar"></span><span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-            <ul class="navbar_menu">
-                <li class="navbar_item">
-                    <a href="#about" class="navbar_links" id="aboutpage">About me</a>
-                </li>
-                <li class="navbar_item">
-                    <a href="#projects" class="navbar_links" id="projectspage">Projects</a>
-                </li>
-                <li class="navbar_item">
-                    <a href="#cv" class="navbar_links" id="cvpage">CV</a>
-                </li>
-                <li class="navbarbtn">
-                    <a href="#contact" class="button" id="contact">Contact</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-        <!-- Intro Section -->
-        <div class="intro">
-            <div class="intro_container">
-                <div class="intro_content">
-                    <h1>Custom interior designs</h1>
-                    <h2>More than 5 years designing experiences.</h2>
-                    <p>Schedule a call to learn more about the services.</p>
-                    <button class="sec_btn"><a href="#">Schedule call</a></button>
-                </div>
-                <div class="intro_img--container">
-                <div class="intro_img--card">foto danielo.png</div>
-                </div>
-            </div>
-        </div>
-
-    <!-- About Section -->
-    <div class="main" id="about">
-        <div class="main_container">
-            <div class="main_img--container">
-                <div class="main_img--card"></div>
-            </div>
-            <div class="main_content">
-                <h1>What do I do?</h1>
-                <h2>Custom interior designs.</h2>
-                <p>Schedule a call to learn more about the services.</p>
-                <button class="sec_btn"><a href="#">Schedule call</a></button>
-            </div>
-        </div>
-    </div>
-    
-
-<!-- PROJECTS-->
-<main class="cd-main" id="projects">
-  <header>
-    <h1>Design Folio</h1>
-  </header>
-
-  <ul class="cd-gallery">
-    <li class="cd-item">
-      <a href="#project1">
-        <div>
-          <h2>Chalet in Faraya, Lebanon</h2>
-          <p>The concept, which consists of platforms and different levels, was made, covering all the elements, from electrical, mechanical, to kitchen and bathroom design.</p>
-          <b>View More</b>
-        </div>
-      </a>
-    </li>
-
-    <li class="cd-item">
-      <a href="#project2">
-        <div>
-          <h2>Title 2</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur.</p>
-          <b>View More</b>
-        </div>
-      </a>
-    </li>
-
-    <li class="cd-item">
-      <a href="#project3">
-        <div>
-          <h2>Poble Verd</h2>
-          <p>This concept and design created to provide social housing and allow inhabits and neighbors to meet through an urban farm and market.</p>
-          <b>View More</b>
-        </div>
-      </a>
-    </li>
-
-    <li class="cd-item">
-      <a href="#project4">
-        <div>
-          <h2>Title 4</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur.</p>
-          <b>View More</b>
-        </div>
-      </a>
-    </li>
-  </ul> <!-- .cd-gallery -->
-</main> <!-- .cd-main -->
-
-<div class="cd-folding-panel">
   
-  <div class="fold-left"></div> <!-- this is the left fold -->
+  <svg id="two" width="40" height="40" viewBox="0 0 100 100">
+    <use xlink:href="#copy-1" />
+  </svg>
   
-  <div class="fold-right"></div> <!-- this is the right fold -->
-  
-  <div class="cd-fold-content">
-    <!-- content will be loaded using javascript -->
-  </div>
+  <svg id="three" width="70" height="70" viewBox="0 0 100 100">
+    <use xlink:href="#copy-1" />
+  </svg>
 
-  <a class="cd-close" href="#0"></a>
-</div> <!-- .cd-folding-panel -->
+  <main>
+    <a href="#index"><img class="logo" id="logo" src="./assets/images/logo.svg"></a>
 
-
-<!-- Footer Section -->
-    <div class="footer__container">
-        <div class="footer__links">
-          <div class="footer__link--wrapper">
-            <div class="footer__link--items">
-              <h2>About Daniel</h2>
-              <a href="/sign__up">About me</a> <a href="/">Testimonials</a>
-              <a href="/">Resume</a> <a href="/">Terms of Service</a>
-            </div>
-            <div class="footer__link--items">
-              <h2>Contact</h2>
-              <a href="/">Request</a> <a href="/">Information</a>
-            </div>
-          </div>
-          <div class="footer__link--wrapper">
-            <div class="footer__link--items">
-              <h2>Social Media</h2>
-              <a href="/">Instagram</a> <a href="/">Facebook</a>
-              <a href="/">Youtube</a>
-            </div>
-          </div>
+    <!-- - #SIDEBAR-->
+    <aside class="sidebar" data-sidebar>
+      <div class="sidebar-info">
+          <figure class="avatar-box">
+          <svg id="one" width="100" height="100" viewBox="0 0 100 100">
+            <g id="copy-1" class="group">
+              <g class="large">
+                <path id="large" d="M41.25,40 L42.5,10 L43.75,40 L45,41.25 L75,42.5 L45,43.75 L43.75,45 L42.5,75 L41.25,45 L40,43.75 L10,42.5 L40,41.25z" fill="pink" />
+              </g>
+              <g class="large-2" transform="rotate(45)">
+                <use xlink:href="#large" />
+              </g>
+              <g class="small">
+                <path id="small" d="M41.25,40 L42.5,25 L43.75,40 L45,41.25 L60,42.5 L45,43.75 L43.75,45 L42.5,60 L41.25,45 L40,43.75 L25,42.5 L40,41.25z" fill="pink" />
+              </g>
+            </g>
+            
+          </svg>
+          <img id="avatar" src="./assets/images/my-avatar.png" alt="Paula Lara" width="100">
+        </figure>
+        
+        <div class="info-content">
+          <h1 class="name" title="Paula Lara">Paula Lara</h1>
+          <p class="title">IT and Design</p>
         </div>
-        <section class="social__media">
-          <div class="social__media--wrap">
-            <div class="footer__logo">
-              <a href="/" id="footer__logo"><img src="imgs/logoclear.png"></a>
-            </div>
-            <p class="website__rights">© DANIEL KHOURY 2020. All rights reserved</p>
-            <div class="social__icons">
-              <a href="/" class="social__icon--link" target="_blank"
-                ><i class="fab fa-facebook"></i
-              ></a>
-              <a href="/" class="social__icon--link"
-                ><i class="fab fa-instagram"></i
-              ></a>
-              <a href="/" class="social__icon--link"
-                ><i class="fab fa-youtube"></i
-              ></a>
-              <a href="/" class="social__icon--link"
-                ><i class="fab fa-linkedin"></i
-              ></a>
-              <a href="/" class="social__icon--link"
-                ><i class="fab fa-twitter"></i
-              ></a>
-            </div>
-          </div>
-        </section>
+        <div></div>
+
+        <button class="info_more-btn" data-sidebar-btn>
+          <span>Show Contacts</span>
+
+          <ion-icon name="chevron-down"></ion-icon>
+        </button>
+
       </div>
 
-    <script src="app.js"></script>
+      <div class="sidebar-info_more">
 
+        <ul class="contacts-list">
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Email</p>
+              <a href="mailto:paulalc810@gmail.com" class="contact-link">paulalc810@gmail.com</a>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="calendar-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Years of experience</p>
+
+              <time datetime="1982-06-23">+8yrs creating</time>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Currently Doing</p>
+
+              <address>Working with small clients and developing a new project</address>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Languages</p>
+
+              <address>Spanish, English, Catalan</address>
+            </div>
+
+          </li>
+
+        </ul>
+
+        <ul class="social-list">
+
+          <li class="social-item">
+            <a href="https://www.linkedin.com/in/paularac/" class="social-link">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+          </li>
+
+                    <li class="social-item">
+            <a href="https://www.upwork.com/freelancers/~018796678397626185" class="social-link">
+            <img src="/Users/damne/Dropbox/CREATIONS/PORTFOLIO/Paula-Lara-Portfolio/assets/images/logo-upwork.png" width="20">              
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="#" class="social-link">
+              <ion-icon name="logo-github"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://www.instagram.com/paularashots" class="social-link">
+              <ion-icon name="logo-instagram"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="https://dribbble.com/paularalc" class="social-link">
+              <ion-icon name="logo-dribbble"></ion-icon>
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </aside>
+
+
+    <!--- #main-content    -->
+
+    <div class="main-content">
+
+      <!-- #NAVBAR     -->
+
+      <nav class="navbar">
+        
+        <ul class="navbar-list">
+          
+          <li>
+            <button class="navbar-link  active" data-nav-link>About</button>
+          </li>
+
+          <li>
+            <button class="navbar-link" data-nav-link>Resume</button>
+          </li>
+
+          <li>
+            <button class="navbar-link" data-nav-link>Portfolio</button>
+          </li>
+
+          <li>
+            <button class="navbar-link" data-nav-link>Contact</button>
+          </li>
+
+
+        </ul>
+
+      </nav>
+
+
+      <!-- #ABOUT      -->
+
+      <article class="about  active" data-page="about">
+
+        <header>
+          <img class="decor" src="/Users/damne/Dropbox/CREATIONS/PORTFOLIO/Paula-Lara-Portfolio/assets/images/decor-1.svg"><h2 class="h2 article-title">About me<img class="decor" src="/Users/damne/Dropbox/CREATIONS/PORTFOLIO/Paula-Lara-Portfolio/assets/images/decor-3.svg"><img class="decor" src="/Users/damne/Dropbox/CREATIONS/PORTFOLIO/Paula-Lara-Portfolio/assets/images/decor-3.svg"></h2>
+        </header>
+
+        <section class="about-text">
+          <p>
+            I'm a designer from Barcelona, Spain, specializing in web development and graphic media. My passion lies in crafting visually stunning designs that seamlessly blend client requirements with user expectations. With a keen eye for detail, I infuse each project with a personal touch, ensuring it not only meets functional needs but also captivates the audience. 
+          </p>
+
+          <p>
+            My ultimate goal is to convey the client's message and identity in the most innovative and creative manner possible. Throughout my career, I've had the opportunity to work with different brands, bringing their visions to life through captivating web designs and graphic media.
+          </p>
+        </section>
+
+
+        <!--- service -->
+
+        <section class="service">
+
+          <img class="decor2" src="/Users/damne/Dropbox/CREATIONS/PORTFOLIO/Paula-Lara-Portfolio/assets/images/decor-2.svg"><h3 class="h3 service-title">What i'm doing<img class="decor2" src="/Users/damne/Dropbox/CREATIONS/PORTFOLIO/Paula-Lara-Portfolio/assets/images/decor-3.svg"></h3>
+
+          <ul class="service-list">
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/diseno-web.png" alt="design icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Web design</h4>
+
+                <p class="service-item-text">
+                  Crafting captivating and responsive online experiences for your brand.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/diseno-grafico.png" alt="Web development icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Graphic Design</h4>
+
+                <p class="service-item-text">
+                  Transforming ideas into high-quality visually stunning and impactful designs.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/persona-brand.png" alt="mobile app icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Branding</h4>
+
+                <p class="service-item-text">
+                  Crafting a unique and authentic identity that resonates with individuals and businesses alike.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="./assets/images/bola-magica.png" alt="camera icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">UI/UX Design</h4>
+
+                <p class="service-item-text">
+                  Designing intuitive, engaging, and user-friendly digital interfaces for seamless experiences.
+                </p>
+              </div>
+
+            </li>
+
+          </ul>
+
+        </section>
+
+
+        <!--
+          - testimonials
+        -->
+
+        <section class="testimonials">
+
+          <img class="decor2" src="/Users/damne/Dropbox/CREATIONS/PORTFOLIO/Paula-Lara-Portfolio/assets/images/decor-2.svg"><h3 class="h3 service-title">What my dear clients say<img class="decor2" src="/Users/damne/Dropbox/CREATIONS/PORTFOLIO/Paula-Lara-Portfolio/assets/images/decor-3.svg"></h3>
+
+          <ul class="testimonials-list has-scrollbar">
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+                <figure class="testimonials-avatar-box">
+                  <img src="./assets/images/avatar-1.png" alt="Nick Pelling" width="60" data-testimonials-avatar>
+                </figure>
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Nick Pelling</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    "Paula is a talented illustrator who always delivers quality work on time. Her communication is clear and she always replies promptly. We continue to work with Paula and would recommend her to others :)"
+                  </p>
+                </div>
+
+              </div>
+            </li>
+
+            <li class="testimonials-item">
+              <div class="content-card" data-testimonials-item>
+
+                <figure class="testimonials-avatar-box">
+                  <img src="./assets/images/avatar-4.png" alt="Markus Straessle" width="60" data-testimonials-avatar>
+                </figure>
+
+                <h4 class="h4 testimonials-item-title" data-testimonials-title>Markus Straessle</h4>
+
+                <div class="testimonials-text" data-testimonials-text>
+                  <p>
+                    Highly recommend working with Paula. She's prompt, flexible, and good at what she does.
+                  </p>
+                </div>
+
+              </div>
+            </li>
+
+          </ul>
+
+        </section>
+
+
+        <!--
+          - testimonials modal
+        -->
+
+        <div class="modal-container" data-modal-container>
+
+          <div class="overlay" data-overlay></div>
+
+          <section class="testimonials-modal">
+
+            <button class="modal-close-btn" data-modal-close-btn>
+              <ion-icon name="close-outline"></ion-icon>
+            </button>
+
+            <div class="modal-img-wrapper">
+              <figure class="modal-avatar-box">
+                <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="80" data-modal-img>
+              </figure>
+
+              <img src="./assets/images/icon-quote.svg" alt="quote icon">
+            </div>
+
+            <div class="modal-content">
+
+              <h4 class="h3 modal-title" data-modal-title>Daniel lewis</h4>
+
+              <div data-modal-text>
+                <p>
+
+                </p>
+              </div>
+
+            </div>
+
+          </section>
+
+        </div>
+
+
+        <!--- clients -->
+
+        <section class="clients">
+
+          <img class="decor2" src="/Users/damne/Dropbox/CREATIONS/PORTFOLIO/Paula-Lara-Portfolio/assets/images/decor-2.svg"><h3 class="h3 service-title">Clients<img class="decor2" src="/Users/damne/Dropbox/CREATIONS/PORTFOLIO/Paula-Lara-Portfolio/assets/images/decor-3.svg"></h3>
+
+          <ul class="clients-list has-scrollbar">
+
+            <li class="clients-item">
+              <a href="#">
+                <img src="./assets/images/logo-1-color.png" alt="client logo">
+              </a>
+            </li>
+
+            <li class="clients-item">
+              <a href="#">
+                <img src="./assets/images/logo-2-color.png" alt="client logo">
+              </a>
+            </li>
+
+            <li class="clients-item">
+              <a href="#">
+                <img src="./assets/images/logo-3-color.png" alt="client logo">
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+
+
+
+
+      <!--
+        - #RESUME
+      -->
+
+      <article class="resume" data-page="resume">
+
+        <header>
+          <h2 class="h2 article-title">Resume</h2>
+        </header>
+        <section class="timeline">
+          <section class="about-text">
+         <p>Do you need a more portable format? You can download a version of my resume in a <a href="" id="link">pdf format</a>, which also includes contact details, certifications and others.</p>
+        </section>
+          <section class="timeline">
+
+            <div class="title-wrapper">
+              <div class="icon-box">
+                <ion-icon name="desktop-outline"></ion-icon>
+              </div>
+  
+              <h3 class="h3">Freelance</h3>
+            </div>
+  
+            <ol class="timeline-list">
+  
+              <li class="timeline-item">
+  
+                <h4 class="h4 timeline-item-title">Graphic design and Illustrator (Freelance)</h4>
+  
+                <span>2022 — Present</span>
+  
+                <p class="timeline-text">
+                  Closely worked with several clients giving support on the field of graphic design (online content: banners, buttons, thumbnails, ), illustration (digital and traditional) and interface design (landing pages, user interfaces for web apps and mobile apps).
+                </p>
+  
+              </li>
+  
+              <li class="timeline-item">
+  
+                <h4 class="h4 timeline-item-title">IT Auditor</h4>
+  
+                <span>2022 - 2024</span>
+  
+                <p class="timeline-text">
+                  IT audits, including testing the
+design, implementation and
+effectiveness of general IT
+controls (GITC), automatic
+controls (ITAC) and
+information produced by the
+entity (IPE). Experience in
+SAP, NAVISION, AS400 and other
+ERP.
+Process-based risk assessment,
+including fraud and error risk
+detection.
+                </p>
+  
+              </li>
+  
+              <li class="timeline-item">
+  
+                <h4 class="h4 timeline-item-title">Web designer</h4>
+  
+                <span>2010 — 2013</span>
+  
+                <p class="timeline-text">
+                  Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et
+                  quas molestias
+                  exceptur.
+                </p>
+  
+              </li>
+  
+            </ol>
+  
+          </section>
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
+            </div>
+
+            <h3 class="h3">Education</h3>
+          </div>
+
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Contemporary Design <i>(Universitat Politècnica de Catalunya)</i></h4>
+
+              <span>2007 — 2008</span>
+
+              <p class="timeline-text">
+              Master focused on the study of the latest trends in
+design (graphic, architectural and product) and the work in
+multidisciplinary work groups for the resolution of space problems
+with special attention to social impact.
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Industrial Design Engineering <i>(Universitat de Barcelona)</i></h4>
+
+              <span>2006 — 2007</span>
+
+              <p class="timeline-text">
+                Learnt about the production of final products through CAD
+modeling (Rhinoceros, CATIA, SketchUp, AutoCAD), 3D
+printing and programming with Arduino.
+Design Thinking workshops developing products and solutions for
+real cases in collaboration with the company Danone.
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">BSC (Honours) Computing & IT, pathway in Design <i>(The Open University)</i></h4>
+
+              <span>2002 — 2004</span>
+
+              <p class="timeline-text">
+                Computer and information technology. 4-year degree. Network
+and database administration, development of software solutions
+(AWS, Oracle). Application design with HTML5, CSS3 and
+JavaScript. Principles of PHP.
+              </p>
+
+            </li>
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Graphic Arts <i>(Escola Joso)</i></h4>
+
+              <span>2002 — 2004</span>
+
+              <p class="timeline-text">
+                Drawing, storyboarding/scripting, color theory and application,
+comics, character creation and graphic design.
+              </p>
+
+            </li>
+
+          </ol>
+
+        </section>
+
+        <section class="skill">
+
+          <h3 class="h3 skills-title">Languages</h3>
+
+          <ul class="skills-list content-card">
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Spanish</h5>
+                <data value="80">90% - Mother tongue</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 90%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">English</h5>
+                <data value="70">65% - C1 Professional (First Certificate adquired in 2013)</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 65%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Catalan</h5>
+                <data value="90">60% - Second language (but I use English quite more often)</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 60%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Italian</h5>
+                <data value="50">5% - Studying B1</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 6%;"></div>
+              </div>
+
+            </li>
+
+          </ul>
+
+        </section>
+
+        <section class="skill">
+
+          <h3 class="h3 skills-title">My skills</h3>
+
+          <ul class="skills-list content-card">
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Web design</h5>
+                <data value="80">80%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 80%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Graphic design</h5>
+                <data value="70">70%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 70%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Branding</h5>
+                <data value="90">90%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 90%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">WordPress</h5>
+                <data value="50">50%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 50%;"></div>
+              </div>
+
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+
+
+
+
+      <!--
+        - #PORTFOLIO
+      -->
+      <article class="portfolio" data-page="portfolio">
+
+        <header>
+          <h2 class="h2 article-title">Portfolio</h2>
+        </header>
+        <section class="projects">
+          <ul class="filter-list">
+
+            <li class="filter-item">
+              <button class="active" data-filter-btn>All</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>UI/UX</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>Branding</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>Illustration</button>
+            </li>
+
+            <li class="filter-item">
+              <button data-filter-btn>Graphic Design</button>
+            </li>
+
+          </ul>
+
+          <div class="filter-select-box">
+
+            <button class="filter-select" data-select>
+
+              <div class="select-value" data-selecct-value>Select category</div>
+
+              <div class="select-icon">
+                <ion-icon name="chevron-down"></ion-icon>
+              </div>
+
+            </button>
+
+            <ul class="select-list">
+
+              <li class="select-item">
+                <button data-select-item>All</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>User interface</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>Branding</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>Illustration</button>
+              </li>
+
+              <li class="select-item">
+                <button data-select-item>Graphic Design</button>
+              </li>
+
+            </ul>
+
+          </div>
+        
+          <ul class="project-list">
+            <li class="project-item  active" data-filter-item data-category="ui/ux">
+              <a href="./assets/images/project-1.jpg">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-1.jpg" alt="user-friendly" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Kids App</h3>
+
+                <p class="project-category">UI/UX</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="branding">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-2.jpg" alt="orizon" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">MeeCube</h3>
+
+                <p class="project-category">Branding</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="illustration">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-3.jpg" alt="fundo" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">"Bling bling" elements</h3>
+
+                <p class="project-category">Illustration</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="illustration">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-9.png" alt="baseball" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Baseball</h3>
+
+                <p class="project-category">illustration</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="graphic design">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-20.jpg" alt="form designs" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Interactive Form</h3>
+
+                <p class="project-category">Graphic Design</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="graphic design">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-5.jpg" alt="packaging" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Packaging design</h3>
+
+                <p class="project-category">Illustration</p>
+
+              </a>
+            </li>
+
+                        <li class="project-item  active" data-filter-item data-category="graphic design">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-4.JPG" alt="MEECUBE" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Iconography</h3>
+
+                <p class="project-category">Graphic design, Illustration</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="ui/ux">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-6.jpg" alt="meecube" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Kids App</h3>
+
+                <p class="project-category">UI/UX, Illustration</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="illustration">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-7.jpg" alt="sugar crush (illustration)" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Sugar Crush</h3>
+
+                <p class="project-category">Illustration</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="illustration">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-16.jpg" alt="illustration" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Game Elements</h3>
+
+                <p class="project-category">Illustration</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="illustration">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-21.jpg" alt="illustration" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Game Elements</h3>
+
+                <p class="project-category">Illustration</p>
+
+              </a>
+
+            <li class="project-item  active" data-filter-item data-category="illustration">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-17.jpg" alt="illustration" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Game Elements</h3>
+
+                <p class="project-category">Illustration</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="graphic design">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-19.jpg" alt="educational designs" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Resumes</h3>
+
+                <p class="project-category">Graphic Design</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="branding">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-10.jpg" alt="branding" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Brand Refresh</h3>
+
+                <p class="project-category">Branding</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="illustration">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-0.jpg" alt="illustration" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Moon Girl</h3>
+
+                <p class="project-category">Illustration</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="illustration">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-11.jpg" alt="illustration" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Space Girl</h3>
+
+                <p class="project-category">Illustration</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="graphic design">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-14.jpg" alt="baseball" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Banner</h3>
+
+                <p class="project-category">Graphic design, Illustration</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="branding">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-8.jpg" alt="task manager" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Reflections Of The Form</h3>
+
+                <p class="project-category">Branding</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="branding">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-12.jpg" alt="illustration" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Daniel Khoury</h3>
+
+                <p class="project-category">Branding</p>
+
+              </a>
+            </li>
+
+            <li class="project-item  active" data-filter-item data-category="graphic design">
+              <a href="#">
+
+                <figure class="project-img">
+                  <div class="project-item-icon-box">
+                    <ion-icon name="eye-outline"></ion-icon>
+                  </div>
+
+                  <img src="./assets/images/project-18.jpg" alt="educational designs" loading="lazy">
+                </figure>
+
+                <h3 class="project-title">Reflections Of The Form</h3>
+
+                <p class="project-category">Graphic Design, Illustration</p>
+
+              </a>
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+      <!--
+        - #CONTACT
+      -->
+
+      <article class="contact" data-page="contact">
+
+        <header>
+          <h2 class="h2 article-title">Contact</h2>
+        </header>
+        <section class="about-text">
+          <p>
+            Thank you for taking the time to reach out to me. Your interest and enthusiasm are truly appreciated. Whether you have a question, a project idea, or simply want to connect, I am eager to hear from you. Let's work together to turn your dreams into reality!
+          </p>
+
+        </section>
+        <section class="contact-form">
+          <form action="https://formspree.io/f/mgegrgvk"  method="POST" class="form" data-form>
+              <label>
+                <div class="input-wrapper">
+                  <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
+                  <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
+                </div>
+              </label>
+              <label>
+                <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
+              </label>
+              <!-- your other form fields go here -->
+              <button class="form-btn" type="submit" disabled data-form-btn><ion-icon name="paper-plane"></ion-icon>
+                <span>Send Message</span>
+              </button>
+        </form>
+
+        </section>
+
+      </article>
+
+    </div>
+
+          <!--
+        - #ABOUT
+      -->
+
+
+  </main>
+
+  <!--
+    - custom js link
+  -->
+  <script src="./assets/js/script.js"></script>
+
+  <!--
+    - ionicon link
+  -->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
 </body>
+
 </html>
