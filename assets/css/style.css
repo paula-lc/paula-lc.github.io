@@ -1249,7 +1249,7 @@ path {
 
 .project-item-icon-box {
   --scale: 0.8;
-  background: var(--jet);
+  /*background: var(--jet);*/
   /*color: #fff;*/
   position: absolute;
   top: 50%;
