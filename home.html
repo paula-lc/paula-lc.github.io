@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="theme-color" content="#FCE9AB"/>
+<title>Housemates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{
+  --rose:#DC4F7C;--rose-light:#F9D0DF;--rose-dark:#a8325a;
+  --tomato:#C42B34;--tomato-light:#F5C0C3;
+  --vanilla:#FCE9AB;--vanilla-dark:#c9a800;
+  --orange:#FC8A2D;--orange-light:#FFE0C2;--orange-dark:#c5600a;
+  --olive:#9E9820;--olive-light:#ECEDC0;--olive-dark:#6b6812;
+  --bg:#FDF8EE;--surface:#FFFFFF;
+  --text:#1E1A14;--text-2:#5A5245;--text-3:#A09880;
+  --border:#EDE8DC;--border-strong:#D4CCBC;
+  --radius:16px;--radius-sm:10px;
+  --font-display:'Playfair Display',serif;
+  --font-body:'DM Sans',sans-serif;
+  --tab-h:68px;
+  --safe-bottom:env(safe-area-inset-bottom,0px);
+}
+html,body{height:100%;overflow:hidden}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-size:15px;display:flex;flex-direction:column}
+#loading{position:fixed;inset:0;background:var(--vanilla);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;z-index:999}
+.loading-logo{font-family:var(--font-display);font-size:32px;color:var(--tomato)}
+.loading-logo em{color:var(--rose);font-style:normal}
+#loading p{font-size:13px;color:var(--text-2)}
+.header{background:var(--vanilla);padding:14px 18px 12px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;border-bottom:1px solid rgba(0,0,0,0.07)}
+.logo{font-family:var(--font-display);font-size:22px;color:var(--tomato);line-height:1}
+.logo em{color:var(--rose);font-style:normal}
+.header-right{display:flex;align-items:center;gap:10px}
+.month-nav{display:flex;align-items:center;gap:5px}
+.month-label{font-size:13px;font-weight:500;color:var(--text-2);min-width:82px;text-align:center}
+.nav-btn{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--border-strong);background:var(--surface);cursor:pointer;font-size:15px;color:var(--text-2);display:flex;align-items:center;justify-content:center}
+.nav-btn:active{background:var(--rose-light);border-color:var(--rose)}
+.conn-dot{width:8px;height:8px;border-radius:50%;background:#ccc;flex-shrink:0;transition:background .3s}
+.conn-dot.ok{background:var(--olive)}
+.scroll-area{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:16px 16px calc(var(--tab-h) + var(--safe-bottom) + 20px)}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;height:calc(var(--tab-h) + var(--safe-bottom));background:var(--surface);border-top:1px solid var(--border);display:flex;align-items:flex-start;padding-top:6px;z-index:100}
+.nav-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;cursor:pointer;border:none;background:none;color:var(--text-3);font-family:var(--font-body);padding:4px 2px}
+.nav-icon-wrap{padding:4px 16px;border-radius:12px;transition:background .15s}
+.nav-item.active .nav-icon-wrap{background:var(--rose-light)}
+.nav-icon{font-size:21px;line-height:1.2}
+.nav-label{font-size:10px;font-weight:500;letter-spacing:.02em;color:var(--text-3)}
+.nav-item.active .nav-label{color:var(--rose-dark)}
+.section{display:none}.section.active{display:block}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.metric{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:12px 8px;text-align:center}
+.metric-val{font-family:var(--font-display);font-size:24px;color:var(--tomato);line-height:1}
+.metric-lbl{font-size:10px;color:var(--text-3);margin-top:3px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px;margin-bottom:12px}
+.card-title{font-size:12px;font-weight:500;color:var(--text-3);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px;display:flex;align-items:center;gap:6px}
+.item-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--border)}
+.item-row:last-child{border-bottom:none;padding-bottom:0}
+.item-row:first-child{padding-top:0}
+.cb{width:20px;height:20px;accent-color:var(--rose);cursor:pointer;flex-shrink:0}
+.item-label{flex:1;font-size:14px;color:var(--text);line-height:1.35}
+.item-label.done{text-decoration:line-through;color:var(--text-3)}
+.item-date{font-size:11px;color:var(--text-2);background:var(--vanilla);padding:2px 7px;border-radius:20px;white-space:nowrap;flex-shrink:0}
+.badge{font-size:11px;padding:3px 9px;border-radius:20px;flex-shrink:0;font-weight:500}
+.badge-p{background:var(--rose-light);color:var(--rose-dark)}
+.badge-y{background:var(--orange-light);color:var(--orange-dark)}
+.badge-both{background:var(--olive-light);color:var(--olive-dark)}
+.del-btn{background:none;border:none;cursor:pointer;color:var(--border-strong);font-size:20px;line-height:1;padding:0 2px;flex-shrink:0}
+.del-btn:active{color:var(--tomato)}
+.add-form{margin-top:14px;padding-top:14px;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:8px}
+.form-row{display:flex;gap:8px}
+.form-input{font-family:var(--font-body);font-size:14px;padding:11px 13px;border:1.5px solid var(--border);border-radius:var(--radius-sm);background:var(--bg);color:var(--text);width:100%;outline:none;-webkit-appearance:none;transition:border-color .15s}
+.form-input:focus{border-color:var(--rose)}
+.form-input::placeholder{color:var(--text-3)}
+select.form-input{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23A09880' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:32px;cursor:pointer}
+.add-btn{font-family:var(--font-body);background:var(--rose);color:#fff;border:none;border-radius:var(--radius-sm);padding:12px 18px;font-size:14px;font-weight:500;cursor:pointer;-webkit-appearance:none;transition:background .15s}
+.add-btn:active{background:var(--rose-dark)}
+.full{width:100%}
+.event-row{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border)}
+.event-row:last-child{border-bottom:none}
+.event-day-box{min-width:46px;height:46px;background:var(--vanilla);border-radius:var(--radius-sm);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0}
+.event-day-num{font-family:var(--font-display);font-size:20px;color:var(--tomato);line-height:1}
+.event-day-mo{font-size:9px;color:var(--text-3);text-transform:uppercase;letter-spacing:.04em}
+.event-info{flex:1;min-width:0}
+.event-name{font-size:14px;font-weight:500;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.event-cat{font-size:12px;color:var(--text-3);margin-top:2px}
+.gasto-row{display:flex;align-items:center;gap:8px;padding:10px 0;border-bottom:1px solid var(--border)}
+.gasto-row:last-child{border-bottom:none}
+.gasto-label{flex:1;font-size:14px;color:var(--text);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.gasto-amt{font-size:14px;font-weight:500;color:var(--text);white-space:nowrap}
+.balance-wrap{margin-top:14px;padding-top:14px;border-top:1px solid var(--border)}
+.balance-sub{font-size:12px;color:var(--text-3);margin-bottom:10px}
+.balance-row{display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.balance-name{font-size:13px;font-weight:500;width:68px;flex-shrink:0}
+.bar-wrap{flex:1;height:7px;background:var(--border);border-radius:4px;overflow:hidden}
+.bar-fill{height:100%;border-radius:4px;transition:width .5s}
+.bar-p{background:var(--rose)}
+.bar-y{background:var(--orange)}
+.balance-amt{font-size:13px;font-weight:500;width:60px;text-align:right;flex-shrink:0}
+.balance-alert{margin-top:10px;font-size:13px;padding:10px 14px;border-radius:var(--radius-sm);background:var(--olive-light);color:var(--olive-dark);font-weight:500}
+.cal-header-row{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:4px}
+.cal-day-lbl{font-size:10px;color:var(--text-3);text-align:center;text-transform:uppercase;letter-spacing:.04em;padding:3px 0}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+.cal-cell{min-height:46px;background:var(--bg);border-radius:6px;padding:4px 3px;display:flex;flex-direction:column;gap:2px}
+.cal-cell.today{background:var(--vanilla)}
+.cal-cell.empty{background:none}
+.cal-num{font-size:11px;font-weight:500;color:var(--text-2)}
+.cal-cell.today .cal-num{color:var(--tomato);font-weight:600}
+.cal-pip{font-size:9px;border-radius:3px;padding:1px 3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cal-pip.ev{background:var(--rose-light);color:var(--rose-dark)}
+.cal-pip.tk{background:var(--olive-light);color:var(--olive-dark)}
+.review-item{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);font-size:13px;color:var(--text)}
+.review-item:last-child{border-bottom:none}
+.review-item input{width:18px;height:18px;accent-color:var(--rose);cursor:pointer;flex-shrink:0}
+.review-item.done-item{color:var(--text-3);text-decoration:line-through}
+.prog-wrap{margin-top:14px}
+.prog-top{display:flex;justify-content:space-between;font-size:12px;color:var(--text-3);margin-bottom:6px}
+.prog-bar{height:8px;background:var(--border);border-radius:4px;overflow:hidden}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--rose),var(--orange));border-radius:4px;transition:width .5s}
+.empty{font-size:13px;color:var(--text-3);padding:1.25rem 0;text-align:center}
+</style>
+</head>
+<body>
+
+<div id="loading">
+  <div class="loading-logo">house<em>mates</em> 🏡</div>
+  <p>Conectando...</p>
+</div>
+
+<div id="main-app" style="display:none;flex-direction:column;height:100%">
+
+  <div class="header">
+    <div class="logo">house<em>mates</em> 🏡</div>
+    <div class="header-right">
+      <div class="month-nav">
+        <button class="nav-btn" onclick="changeMonth(-1)">‹</button>
+        <span class="month-label" id="month-label"></span>
+        <button class="nav-btn" onclick="changeMonth(1)">›</button>
+      </div>
+      <div class="conn-dot" id="conn-dot"></div>
+    </div>
+  </div>
+
+  <div class="scroll-area">
+
+    <!-- TAREAS -->
+    <div id="tab-tareas" class="section active">
+      <div class="metrics">
+        <div class="metric"><div class="metric-val" id="t-total">0</div><div class="metric-lbl">tareas</div></div>
+        <div class="metric"><div class="metric-val" id="t-done">0</div><div class="metric-lbl">hechas</div></div>
+        <div class="metric"><div class="metric-val" id="t-pct">0%</div><div class="metric-lbl">progreso</div></div>
+      </div>
+      <div class="card">
+        <div class="card-title"><span>🏠</span> Hogar</div>
+        <div id="task-list"><div class="empty">Sin tareas este mes</div></div>
+        <div class="add-form">
+          <input type="text" class="form-input" id="task-input" placeholder="Nueva tarea..."/>
+          <div class="form-row">
+            <input type="date" class="form-input" id="task-date" style="flex:1"/>
+            <select class="form-input" id="task-who" style="flex:1">
+              <option value="p">Paula</option>
+              <option value="y">Hermana</option>
+              <option value="both">Las dos</option>
+            </select>
+          </div>
+          <button class="add-btn full" onclick="addTask()">+ Añadir tarea</button>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-title"><span>🌱</span> Tiempo personal</div>
+        <div id="personal-list"><div class="empty">Sin objetivos personales</div></div>
+        <div class="add-form">
+          <input type="text" class="form-input" id="personal-input" placeholder="Ej: estudiar francés..."/>
+          <div class="form-row">
+            <input type="date" class="form-input" id="personal-date" style="flex:1"/>
+            <select class="form-input" id="personal-who" style="flex:1">
+              <option value="p">Paula</option>
+              <option value="y">Hermana</option>
+            </select>
+          </div>
+          <button class="add-btn full" onclick="addPersonal()">+ Añadir objetivo</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- PLANES -->
+    <div id="tab-planes" class="section">
+      <div class="card">
+        <div class="card-title"><span>🤝</span> Actividades juntas</div>
+        <div id="event-list"><div class="empty">Sin planes este mes</div></div>
+        <div class="add-form">
+          <input type="text" class="form-input" id="event-name" placeholder="Actividad..."/>
+          <div class="form-row">
+            <input type="date" class="form-input" id="event-date" style="flex:1"/>
+            <select class="form-input" id="event-cat" style="flex:1">
+              <option value="familia">👨‍👩‍👧 Familia</option>
+              <option value="idiomas">🗣 Idiomas</option>
+              <option value="crear">🎨 Crear</option>
+              <option value="ocio">🎉 Ocio</option>
+              <option value="otro">📌 Otro</option>
+            </select>
+          </div>
+          <button class="add-btn full" onclick="addEvent()">+ Añadir plan</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- GASTOS -->
+    <div id="tab-gastos" class="section">
+      <div class="card">
+        <div class="card-title"><span>💶</span> Gastos del mes</div>
+        <div id="gasto-list"><div class="empty">Sin gastos registrados</div></div>
+        <div class="add-form">
+          <input type="text" class="form-input" id="gasto-label" placeholder="Concepto..."/>
+          <div class="form-row">
+            <input type="date" class="form-input" id="gasto-date" style="flex:1"/>
+            <select class="form-input" id="gasto-who" style="flex:1">
+              <option value="p">Paula</option>
+              <option value="y">Hermana</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <input type="number" class="form-input" id="gasto-amt" placeholder="Importe €" min="0" step="0.01" style="flex:1"/>
+            <button class="add-btn" onclick="addGasto()" style="flex:1">+ Añadir</button>
+          </div>
+        </div>
+        <div id="balance-section"></div>
+      </div>
+    </div>
+
+    <!-- RESUMEN -->
+    <div id="tab-resumen" class="section">
+      <div class="metrics">
+        <div class="metric"><div class="metric-val" id="r-tareas">0%</div><div class="metric-lbl">tareas</div></div>
+        <div class="metric"><div class="metric-val" id="r-planes">0</div><div class="metric-lbl">actividades</div></div>
+        <div class="metric"><div class="metric-val" id="r-gastos">0€</div><div class="metric-lbl">gastado</div></div>
+      </div>
+      <div class="card">
+        <div class="card-title"><span>📅</span> Calendario</div>
+        <div class="cal-header-row" id="cal-headers"></div>
+        <div class="cal-grid" id="cal-grid"></div>
+      </div>
+      <div class="card">
+        <div class="card-title"><span>✅</span> Revisión mensual</div>
+        <div id="review-list"></div>
+        <div class="prog-wrap">
+          <div class="prog-top"><span>Progreso del mes</span><span id="pct-lbl">0%</span></div>
+          <div class="prog-bar"><div class="prog-fill" id="progress-fill" style="width:0%"></div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <nav class="bottom-nav">
+    <button class="nav-item active" onclick="switchTab('tareas',this)">
+      <div class="nav-icon-wrap"><div class="nav-icon">🧹</div></div>
+      <div class="nav-label">Tareas</div>
+    </button>
+    <button class="nav-item" onclick="switchTab('planes',this)">
+      <div class="nav-icon-wrap"><div class="nav-icon">📅</div></div>
+      <div class="nav-label">Planes</div>
+    </button>
+    <button class="nav-item" onclick="switchTab('gastos',this)">
+      <div class="nav-icon-wrap"><div class="nav-icon">💶</div></div>
+      <div class="nav-label">Gastos</div>
+    </button>
+    <button class="nav-item" onclick="switchTab('resumen',this)">
+      <div class="nav-icon-wrap"><div class="nav-icon">📊</div></div>
+      <div class="nav-label">Resumen</div>
+    </button>
+  </nav>
+
+</div>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getDatabase, ref, push, set, remove, onValue }
+  from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBkHQBl6mubIxlEdZ7cIaErqFkbBKoaFkA",
+  authDomain: "housemates-df92d.firebaseapp.com",
+  databaseURL: "https://housemates-df92d-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "housemates-df92d",
+  storageBucket: "housemates-df92d.firebasestorage.app",
+  messagingSenderId: "327305102671",
+  appId: "1:327305102671:web:f2f66f59bab439fae8f13a"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
+const MONTHS_SHORT = ['Ene','Feb','Mar','Abr','May','Jun','Jul','Ago','Sep','Oct','Nov','Dic'];
+const DAYS_SHORT = ['L','M','X','J','V','S','D'];
+const WHO_LABEL = {p:'Paula',y:'Hermana',both:'Las dos'};
+const CAT_LABEL = {familia:'👨‍👩‍👧 Familia',idiomas:'🗣 Idiomas',crear:'🎨 Crear',ocio:'🎉 Ocio',otro:'📌 Otro'};
+const REVIEW_ITEMS = [
+  'Repasar tareas pendientes del mes',
+  'Acordar el reparto del mes siguiente',
+  'Equilibrar gastos si hay diferencia',
+  'Añadir nuevas actividades juntas',
+  'Tiempo personal: ¿se ha cumplido?',
+  'Dejar una nota positiva del mes 💛'
+];
+
+let now = new Date(), curMonth = now.getMonth(), curYear = now.getFullYear();
+let localData = {tasks:{},personal:{},events:{},gastos:{},review:{}};
+
+onValue(ref(db,'.info/connected'), snap => {
+  const ok = snap.val();
+  const dot = document.getElementById('conn-dot');
+  dot.className = 'conn-dot' + (ok?' ok':'');
+  dot.title = ok?'Sincronizado':'Sin conexión';
+});
+
+const mk = () => `${curYear}-${String(curMonth+1).padStart(2,'0')}`;
+
+['tasks','personal','events','gastos','review'].forEach(col => {
+  onValue(ref(db,col), snap => { localData[col]=snap.val()||{}; render(); });
+});
+
+document.getElementById('loading').style.display='none';
+const ma=document.getElementById('main-app');
+ma.style.display='flex';
+
+window.changeMonth = d => {
+  curMonth+=d;
+  if(curMonth>11){curMonth=0;curYear++;}
+  if(curMonth<0){curMonth=11;curYear--;}
+  render();
+};
+
+window.switchTab = (id, btn) => {
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  btn.classList.add('active');
+  document.querySelector('.scroll-area').scrollTop=0;
+  if(id==='resumen') renderResumen();
+};
+
+function esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function fmtDate(s){ if(!s)return''; const [y,m,d]=s.split('-'); return `${parseInt(d)} ${MONTHS_SHORT[parseInt(m)-1]}`; }
+
+function render(){
+  document.getElementById('month-label').textContent=MONTHS_SHORT[curMonth]+' '+curYear;
+  renderTasks(); renderPersonal(); renderEvents(); renderGastos();
+  if(document.getElementById('tab-resumen').classList.contains('active')) renderResumen();
+}
+
+function renderTasks(){
+  const items=Object.entries(localData.tasks).map(([k,v])=>({...v,key:k}))
+    .filter(t=>t.month===mk()).sort((a,b)=>(a.date||'9').localeCompare(b.date||'9'));
+  document.getElementById('task-list').innerHTML=items.length?items.map(t=>`
+    <div class="item-row">
+      <input class="cb" type="checkbox" ${t.done?'checked':''} onchange="toggleItem('tasks','${t.key}',${!t.done})"/>
+      <span class="item-label${t.done?' done':''}">${esc(t.text)}</span>
+      ${t.date?`<span class="item-date">${fmtDate(t.date)}</span>`:''}
+      <span class="badge badge-${t.who==='p'?'p':t.who==='y'?'y':'both'}">${WHO_LABEL[t.who]}</span>
+      <button class="del-btn" onclick="delItem('tasks','${t.key}')">×</button>
+    </div>`).join(''):'<div class="empty">Sin tareas este mes</div>';
+  const done=items.filter(t=>t.done).length,total=items.length;
+  document.getElementById('t-total').textContent=total;
+  document.getElementById('t-done').textContent=done;
+  document.getElementById('t-pct').textContent=total?Math.round(done/total*100)+'%':'0%';
+}
+
+function renderPersonal(){
+  const items=Object.entries(localData.personal).map(([k,v])=>({...v,key:k}))
+    .filter(p=>p.month===mk()).sort((a,b)=>(a.date||'9').localeCompare(b.date||'9'));
+  document.getElementById('personal-list').innerHTML=items.length?items.map(p=>`
+    <div class="item-row">
+      <input class="cb" type="checkbox" ${p.done?'checked':''} onchange="toggleItem('personal','${p.key}',${!p.done})"/>
+      <span class="item-label${p.done?' done':''}">${esc(p.text)}</span>
+      ${p.date?`<span class="item-date">${fmtDate(p.date)}</span>`:''}
+      <span class="badge badge-${p.who==='p'?'p':'y'}">${WHO_LABEL[p.who]}</span>
+      <button class="del-btn" onclick="delItem('personal','${p.key}')">×</button>
+    </div>`).join(''):'<div class="empty">Sin objetivos personales</div>';
+}
+
+function renderEvents(){
+  const items=Object.entries(localData.events).map(([k,v])=>({...v,key:k}))
+    .filter(e=>e.month===mk()).sort((a,b)=>(a.date||'9').localeCompare(b.date||'9'));
+  document.getElementById('event-list').innerHTML=items.length?items.map(e=>{
+    const d=e.date?e.date.split('-'):null;
+    return `<div class="event-row">
+      ${d?`<div class="event-day-box"><div class="event-day-num">${parseInt(d[2])}</div><div class="event-day-mo">${MONTHS_SHORT[parseInt(d[1])-1]}</div></div>`
+         :`<div class="event-day-box" style="font-size:22px">📅</div>`}
+      <div class="event-info">
+        <div class="event-name">${esc(e.name)}</div>
+        <div class="event-cat">${CAT_LABEL[e.cat]||e.cat}</div>
+      </div>
+      <button class="del-btn" onclick="delItem('events','${e.key}')">×</button>
+    </div>`;
+  }).join(''):'<div class="empty">Sin planes este mes</div>';
+}
+
+function renderGastos(){
+  const items=Object.entries(localData.gastos).map(([k,v])=>({...v,key:k}))
+    .filter(g=>g.month===mk()).sort((a,b)=>(a.date||'9').localeCompare(b.date||'9'));
+  document.getElementById('gasto-list').innerHTML=items.length?items.map(g=>`
+    <div class="gasto-row">
+      <span class="gasto-label">${esc(g.label)}</span>
+      ${g.date?`<span class="item-date">${fmtDate(g.date)}</span>`:''}
+      <span class="badge badge-${g.who==='p'?'p':'y'}">${WHO_LABEL[g.who]}</span>
+      <span class="gasto-amt">${parseFloat(g.amt).toFixed(2)}€</span>
+      <button class="del-btn" onclick="delItem('gastos','${g.key}')">×</button>
+    </div>`).join(''):'<div class="empty">Sin gastos registrados</div>';
+  const bs=document.getElementById('balance-section');
+  if(items.length){
+    const pP=items.filter(g=>g.who==='p').reduce((s,g)=>s+parseFloat(g.amt||0),0);
+    const yP=items.filter(g=>g.who==='y').reduce((s,g)=>s+parseFloat(g.amt||0),0);
+    const total=pP+yP,mx=Math.max(pP,yP,0.01),diff=Math.abs(pP-yP)/2,debtor=pP<yP?'Paula':'Hermana';
+    bs.innerHTML=`<div class="balance-wrap">
+      <div class="balance-sub">Total: ${total.toFixed(2)}€ · Mitad: ${(total/2).toFixed(2)}€</div>
+      <div class="balance-row"><span class="balance-name">Paula</span><div class="bar-wrap"><div class="bar-fill bar-p" style="width:${Math.round(pP/mx*100)}%"></div></div><span class="balance-amt">${pP.toFixed(2)}€</span></div>
+      <div class="balance-row"><span class="balance-name">Hermana</span><div class="bar-wrap"><div class="bar-fill bar-y" style="width:${Math.round(yP/mx*100)}%"></div></div><span class="balance-amt">${yP.toFixed(2)}€</span></div>
+      ${diff>0.01?`<div class="balance-alert">${debtor} debe <strong>${diff.toFixed(2)}€</strong> para equilibrar</div>`:`<div class="balance-alert">¡Todo equilibrado! ✓</div>`}
+    </div>`;
+  } else { bs.innerHTML=''; }
+}
+
+function renderResumen(){
+  const tasks=Object.values(localData.tasks).filter(t=>t.month===mk());
+  const done=tasks.filter(t=>t.done).length,total=tasks.length,pct=total?Math.round(done/total*100):0;
+  document.getElementById('r-tareas').textContent=pct+'%';
+  document.getElementById('r-planes').textContent=Object.values(localData.events).filter(e=>e.month===mk()).length;
+  const tG=Object.values(localData.gastos).filter(g=>g.month===mk()).reduce((s,g)=>s+parseFloat(g.amt||0),0);
+  document.getElementById('r-gastos').textContent=tG.toFixed(0)+'€';
+  document.getElementById('pct-lbl').textContent=pct+'%';
+  document.getElementById('progress-fill').style.width=pct+'%';
+  const saved=localData.review||{};
+  document.getElementById('review-list').innerHTML=REVIEW_ITEMS.map((text,i)=>{
+    const key=`item_${i}`,done=saved[key]?.done||false;
+    return `<div class="review-item${done?' done-item':''}">
+      <input type="checkbox" ${done?'checked':''} onchange="toggleReview('${key}',${!done})"/>
+      <span>${text}</span></div>`;
+  }).join('');
+  renderCal();
+}
+
+function renderCal(){
+  document.getElementById('cal-headers').innerHTML=DAYS_SHORT.map(d=>`<div class="cal-day-lbl">${d}</div>`).join('');
+  const firstDay=new Date(curYear,curMonth,1).getDay();
+  const offset=(firstDay+6)%7;
+  const dim=new Date(curYear,curMonth+1,0).getDate();
+  const cells=Array(offset).fill(null);
+  for(let d=1;d<=dim;d++) cells.push(d);
+  while(cells.length%7) cells.push(null);
+  const ms=mk();
+  const evs=Object.values(localData.events).filter(e=>e.month===ms);
+  const tks=Object.values(localData.tasks).filter(t=>t.month===ms&&!t.done&&t.date);
+  const todayD=(now.getMonth()===curMonth&&now.getFullYear()===curYear)?now.getDate():null;
+  document.getElementById('cal-grid').innerHTML=cells.map(d=>{
+    if(!d) return `<div class="cal-cell empty"></div>`;
+    const ds=`${curYear}-${String(curMonth+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const de=evs.filter(e=>e.date===ds),dt=tks.filter(t=>t.date===ds);
+    return `<div class="cal-cell${d===todayD?' today':''}">
+      <div class="cal-num">${d}</div>
+      ${de.map(e=>`<div class="cal-pip ev">${esc(e.name).slice(0,7)}</div>`).join('')}
+      ${dt.map(t=>`<div class="cal-pip tk">${esc(t.text).slice(0,7)}</div>`).join('')}
+    </div>`;
+  }).join('');
+}
+
+window.addTask=()=>{
+  const text=document.getElementById('task-input').value.trim();
+  if(!text) return;
+  push(ref(db,'tasks'),{text,date:document.getElementById('task-date').value,who:document.getElementById('task-who').value,done:false,month:mk()});
+  document.getElementById('task-input').value='';
+};
+window.addPersonal=()=>{
+  const text=document.getElementById('personal-input').value.trim();
+  if(!text) return;
+  push(ref(db,'personal'),{text,date:document.getElementById('personal-date').value,who:document.getElementById('personal-who').value,done:false,month:mk()});
+  document.getElementById('personal-input').value='';
+};
+window.addEvent=()=>{
+  const name=document.getElementById('event-name').value.trim();
+  if(!name) return;
+  push(ref(db,'events'),{name,date:document.getElementById('event-date').value,cat:document.getElementById('event-cat').value,month:mk()});
+  document.getElementById('event-name').value='';
+};
+window.addGasto=()=>{
+  const label=document.getElementById('gasto-label').value.trim();
+  const amt=parseFloat(document.getElementById('gasto-amt').value)||0;
+  if(!label||!amt) return;
+  push(ref(db,'gastos'),{label,date:document.getElementById('gasto-date').value,who:document.getElementById('gasto-who').value,amt,month:mk()});
+  document.getElementById('gasto-label').value='';
+  document.getElementById('gasto-amt').value='';
+};
+window.toggleItem=(col,key,val)=>set(ref(db,`${col}/${key}/done`),val);
+window.delItem=(col,key)=>remove(ref(db,`${col}/${key}`));
+window.toggleReview=(key,val)=>set(ref(db,`review/${key}/done`),val);
+
+['task-input','personal-input','event-name','gasto-label'].forEach((id,i)=>{
+  const fns=[window.addTask,window.addPersonal,window.addEvent,window.addGasto];
+  document.getElementById(id)?.addEventListener('keydown',e=>{if(e.key==='Enter')fns[i]();});
+});
+
+const todayStr=now.toISOString().split('T')[0];
+['task-date','personal-date','event-date','gasto-date'].forEach(id=>{
+  const el=document.getElementById(id); if(el) el.value=todayStr;
+});
+
+render();
+</script>
+</body>
+</html>
